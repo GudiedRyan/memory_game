@@ -1,25 +1,17 @@
 import React from 'react';
 
 class Cards extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            flipped: false,
-            value: ""
-        }
+    
+    button = () => {
+        this.props.button()
     }
+    
     render() {
         return(
             <div className="gameboard">
-                <button onClick={this.button}>{this.state.flipped ? <p>{this.state.value}</p> : <p></p>}</button>
+                <button onClick={this.button}>{this.props.flipped ? <p>{this.props.value}</p> : <p></p>}</button>
             </div>
         )
-    }
-    button = () => {
-        this.setState(state => ({
-            value: "x",
-            flipped: !state.flipped
-        }))
     }
 }
 
