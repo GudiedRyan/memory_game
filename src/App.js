@@ -8,7 +8,6 @@ class App extends React.Component {
     this.state = {
       selected: [],
       matches: 0,
-      flipCount: 0,
       cardList: [
         {
             id: 1,
@@ -44,20 +43,27 @@ class App extends React.Component {
           </div>
             )}
         </div>
-        {this.state.flipCount}
+        {this.state.selected}
     </div>
   );
 }
 flipCard = (event) => {
   const index = event.target.id -1;
   let newdata = [...this.state.cardList];
-  newdata[index].flipped = !newdata[index].flipped;
+  newdata[index].flipped = true;
+  let chosen = [...this.state.selected];
+  chosen.push(event.target.value)
   this.setState(state => ({
     cardList: newdata,
-    flipCount: state.flipCount + 1
+    selected: chosen
   }))
+
 }
 
 }
 
 export default App;
+
+
+//Issue when clicking same button multiple times
+//Once match is obtained, set a state for that particular button to disabled
