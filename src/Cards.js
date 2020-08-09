@@ -1,18 +1,22 @@
 import React from 'react';
 
-class Cards extends React.Component {
-    
-    button = () => {
-        this.props.button()
-    }
+class Card extends React.Component {
     
     render() {
         return(
-            <div className="gameboard">
-                <button onClick={this.button}>{this.props.flipped ? <p>{this.props.value}</p> : <p></p>}</button>
-            </div>
+            <button
+                id={this.props.cardData.id}
+                flipped={this.props.cardData.flipped}
+                value={this.props.cardData.value}
+                onClick={this.props.flipCard}
+            >
+                {this.props.cardData.flipped? <p>{this.props.cardData.value}</p> : <p></p> }
+            </button>
         )
+    }
+    flipCard = () => {
+        this.props.flipCard()
     }
 }
 
-export default Cards;
+export default Card;
